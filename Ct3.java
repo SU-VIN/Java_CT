@@ -1,3 +1,4 @@
+//두 정수 사이의 합
 public class Ct3 {
     public static long solution(int a, int b) {
         long answer = 0;
