@@ -1,7 +1,7 @@
 //SWEA 홀수만 더하기
 import java.util.Scanner;
 
-class Solution
+class SWEA_CT_1
 {
     public static void main(String args[]) throws Exception
     {
