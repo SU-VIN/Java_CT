@@ -1,4 +1,4 @@
-//간단한 369게임
+//간단한 369게임.
 import java.util.Scanner;
 
 public class SWEA_CT_7 {
