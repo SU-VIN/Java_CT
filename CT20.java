@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-//DFS - 바둑이승차 풀었지만 출력이 너무 많이 나옴. ㅅㅂ 해결함
+//DFS - 바둑이승차 풀었지만 출력이 너무 많이 나옴. ㅅㅂ 해결함 해결
 class CT20{
     static int Max;
     static int n;
