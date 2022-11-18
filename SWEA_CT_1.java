@@ -1,4 +1,4 @@
-//SWEA 홀수만 더하기
+//홀수만 더하기
 import java.util.Scanner;
 
 class SWEA_CT_1
