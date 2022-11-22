@@ -4,7 +4,7 @@ import java.util.Collections;
 public class javatest {
     public static void main(String[] args) {
 
-
+//멀미나서 못하겠어요
 //쉬자
         String[] arr1 = {"나","가","다"};
         int [] arr2 = {3,4,2,5,1};
