@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-//신기한 수 - 브론즈3
+//신기한 수 - 브론즈3 브루트포스
 public class BJ_CT_1 {
 //    public static void main(String[] args) {
 //        Scanner scanner = new Scanner(System.in);

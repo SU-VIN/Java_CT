@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-//나누기 - 브론즈2
+//나누기 - 브론즈2 브루투포스
 public class BJ_CT_3 {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
