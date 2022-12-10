@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class BJ_CT_12 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n= Integer.parseInt(br.readLine()); //지방 수
+        int n= Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
         int[] arr= new int[n];
         int sum=0;
@@ -17,37 +17,26 @@ public class BJ_CT_12 {
             sum+=arr[i]; //총합
         }
         Arrays.sort(arr);
-        long m= Integer.parseInt(br.readLine()); //총예산
+        long m= Integer.parseInt(br.readLine());
 
         if(sum<m) System.out.println(arr[n-1]); // 예산요청의 총합이 예산보다 적다면 예산총합에서 젤 큰수 출력
         else{ //예산요청의 총합이 예산보다 크다면
             long start =0;
-            long end=arr[n-1];
-            long result =0;
-
-            while (start<=end){
-                long mid = (start+end)/2;
-                long s=0;
-                for(long v : arr){
-                    if(v>=mid) s+=mid; //값이 상한가 보다 큰것은 상한가로 계산
-                    else s+=v; //값이 상한가보다 작은것은 원래 자기 값으로 계산
-                }
-
-                if(s>m) end = mid-1;
-                else{
-                    start = mid+1;
-                    result = Math.max(result,mid);
-                }
-
+            long end=n-1;
+            long avg = m/n;
+            long mid=(start+end)/2;
+            long s = 0;
+            while (arr[mid]>avg){
+                mid--;
             }
 
-            System.out.println(result);
-
+            for(int i=0;i<=mid;i++){
+                s += arr[i];
+            }
+            long x = m-s;
+            System.out.println(x/(n-(mid+1)));
         }
 
 
     }
 }
-
-
-
