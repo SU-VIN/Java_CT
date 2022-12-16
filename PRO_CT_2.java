@@ -1,4 +1,4 @@
-//레벨 1 콜라문제
+//레벨 1 콜라문제ㅌㅌ
 public class PRO_CT_2 {
     public static int solution(int a, int b, int n) {
         int answer = 0;
