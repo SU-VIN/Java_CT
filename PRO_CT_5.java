@@ -1,5 +1,5 @@
 import java.util.Arrays;
-//레벨1 탐욕법 체육복
+//레벨1 탐욕법 체육복 수정
 public class PRO_CT_5 {
     public static int solution(int n, int[] lost, int[] reserve) {
         Arrays.sort(lost); //정렬시켜주기
