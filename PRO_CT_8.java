@@ -5,14 +5,9 @@ public class PRO_CT_8 {
 
 
         for(int i=0;i<=t.length()-p.length();i++){
-            int count=i;
-            StringBuilder sb = new StringBuilder();
-            while (count<p.length()+i){
-                sb.append(t.charAt(count));
-                count++;
+            if(Long.parseLong(t.substring(i,i+p.length()))<=Long.parseLong(p)){
+                answer++;
             }
-            int num=Integer.parseInt(sb.toString());
-            if(num<=Integer.parseInt(p)) answer++;
         }
         return answer;
     }
