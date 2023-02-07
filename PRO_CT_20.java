@@ -13,7 +13,7 @@ public class PRO_CT_20 {
         for(int i=0;i<progresses.length;i++){
             arr[i]=(int)Math.ceil(((double) 100-progresses[i])/(double)speeds[i]);
         }
-        
+
         for(int i=0;i<arr.length;i++){
             if(i==0) deque.addLast(arr[i]); //처음 데이터는 무조건 넣어주고
             else{
