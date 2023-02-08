@@ -11,24 +11,27 @@ public class PRO_CT_22 {
             while (true){
                 //큐가 비었을때
                 if(bridge.isEmpty()){
-                    bridge.addFirst(t);
-                    total+=t;
-                    count++;
+                    bridge.addFirst(t); //다리에 추가해주고
+                    total+=t; //총무게에 더해주고
+                    count++; //1초++
                     break;
                 }
+                //다리에 올라온 트럭이 다리 길이와 같아질때
                 else if(bridge.size()==bridge_length){
-                    total-=bridge.pollLast();
+                    total-=bridge.pollLast(); //총무게에서 제일 먼저나가는 트럭을 빼줌
+                    //break를 안했기때문에 t가 넘어가지 않고 계속 돔
                 }
                 //큐가 비어있지 않을때
                 else{
-                    if(total+t>weight){
-                        bridge.addFirst(0);
+                    if(total+t>weight){ //최대무개를 초과한다면
+                        //이미 최대길이와 같은지를 위에서 비교했기때문에
+                        bridge.addFirst(0); //0으로 값을 채워준다
                         count++;
                         //break를 안했기때문에 t가 넘어가지 않고 계속 돔
-                    }else{
-                        bridge.addFirst(t);
-                        total+=t;
-                        count++;
+                    }else{//최대무게를 넘지 않는다면
+                        bridge.addFirst(t); //다리에 추가해주고
+                        total+=t; //총무게 더해주고
+                        count++;//1초++;
                         break;
                     }
                 }
@@ -37,8 +40,7 @@ public class PRO_CT_22 {
             }
         }
 
-
-
+        //마지막트럭이 다리에 올라간 시점에서 종료되므로 걸린시간+다리의 길이를 더해준다
         return count+bridge_length;
     }
 
