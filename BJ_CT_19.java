@@ -70,6 +70,7 @@ public class BJ_CT_19 {
         System.out.println(answer);
 
     }
+    //0의 개수를 반환
     private  static  int bfs(ArrayDeque<Node>poison,ArrayDeque<Node> block ){
         int[][] map2 = new int[N][M]; //여기서 bfs를 돌리자 원본은 냅둬야함
 
