@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class PRO_CT_33 {
     //레벨2 게임 맵 최단거리
+                                    //상 하 좌 우  map(y,x)
     private  static final  int[] rx ={0,0,1,-1};
     private  static  final  int[] ry={1,-1,0,0};
 
@@ -50,8 +51,8 @@ public class PRO_CT_33 {
                     // 방문 처리
                     if (!visited[next_r][next_c]) { // 방문하지 않았다면 true
                         visited[next_r][next_c] = true;
-                        dist[next_r][next_c] = dist[now.r][now.c] + 1;
-                        queue.addLast(new Node(next_r, next_c));
+                        dist[next_r][next_c] = dist[now.r][now.c] + 1; //다음위치는 현재위치의 +1 like 걸음의 수
+                        queue.addLast(new Node(next_r, next_c)); //이것을 다시 큐에 넣어줌
                     }
                 }
             }
