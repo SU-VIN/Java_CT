@@ -49,7 +49,7 @@ public class BJ_CT_21 {
         //방문체크
         //cnt[now.r][now.c]가 0 이면 방문을 아직 않은 것이 맞나? 확신할 수 없음.
         //0이라는 값을 여기를 통해서 갈 수 있는 방법이 없다는걸 뜻할 수 있다
-        if(cnt[now.r][now.c]>=-1){
+        if(cnt[now.r][now.c]>-1){
             return cnt[now.r][now.c];
         }
 
