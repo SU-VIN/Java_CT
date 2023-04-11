@@ -1,5 +1,5 @@
 import java.util.HashSet;
-
+//레벨2 방문길이 팁은 점이 아니라 선임!
 public class PRO_CT_41 {
 
     public static int solution(String dirs) {
