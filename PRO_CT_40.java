@@ -14,7 +14,7 @@ public class PRO_CT_40 {
                     cnt++;
                 }
             }
-            if(cnt==skill_trees[i].length()) answer++;
+            if(cnt==skill_trees[i].length()) answer++; //스킬트리의 스킬이 아닐경우 ex) QWER
 
             //skill이 될 수 있는지 확인
             for(int j=0;j<sb.length();j++){
