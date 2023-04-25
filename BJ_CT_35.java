@@ -8,6 +8,7 @@ public class BJ_CT_35 {
     static String[][] map;
 
     static int result;
+
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
