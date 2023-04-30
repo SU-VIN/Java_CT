@@ -1,66 +1,119 @@
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.StringTokenizer;
 
-public class javatest {
+public class Main {
+    // 백준 골드3
+    private static int N;
+    private static int ANSWER = Integer.MAX_VALUE;
+    private static int IslandNum = 1;
+    private static int[][] map;
+    private static boolean[][] visited;
+    private static int[] rx = {0, 0, -1, 1};
+    private static int[] ry = {1, -1, 0, 0};
 
-    public static int solution(int n, int m, int k, int[] u, int[] v, int[] l) {
-        int answer = 0;
-        int max = Integer.MAX_VALUE;
-        u = Arrays.copyOfRange(u,0,n);
-        v = Arrays.copyOfRange(v,0,n);
+    private static class Node {
+        int r, c;
+        int dist;
 
-        //컨베이너 벨트가 이어져있는지 확인
-        for (int i = 1; i <= n; i++) {
-            if(u[i-1]!=i&&v[i-1]!=i){
-                return -1;
+        public Node(int r, int c, int dist) {
+            this.r = r;
+            this.c = c;
+            this.dist = dist;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        map = new int[N][N];
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < N; j++) {
+                map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        //벨트 길이 최솟값 구하기
-        boolean[] visited = new boolean[l.length];
-        choice(l,visited,0,n);
+        // 섬 마다 번호 다르게 부여하기 -> BFS
+        visited = new boolean[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (map[i][j] == 1 && !visited[i][j]) {
+                    visited[i][j] = true;
+                    map[i][j] = IslandNum;
+                    setIslandNum(i, j);
+                    IslandNum++;
+                }
+            }
+        }
 
-
-        
-
-
-        return answer;
+        // 섬 간의 거리 측정하기 -> BFS
+        visited = new boolean[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (map[i][j] > 0 && !visited[i][j]) {
+                    visited[i][j] = true;
+                    setBridgeDist(i, j, map[i][j]);
+                    visited = new boolean[N][N];
+                }
+            }
+        }
+        System.out.println(ANSWER);
     }
 
-    static void choice(int[] arr, boolean[] visited, int start, int r){
-        if(r==0){
-            return
-        }else{
-            for (int i = 0; i < arr.length; i++) {
-                visited[i]=true;
-                choice(arr,visited,i+1,r-1);
-                visited[i]=false;
+    private static void setBridgeDist(int r, int c, int islandNum) {
+        ArrayDeque<Node> queue = new ArrayDeque<>();
+        queue.addLast(new Node(r, c, 0));
+
+        while (!queue.isEmpty()) {
+            Node now = queue.pollFirst();
+            for (int i = 0; i < 4; i++) {
+                int nr = now.r + ry[i];
+                int nc = now.c + rx[i];
+
+                if (nr < 0 || nc < 0 || nr >= N || nc >= N) {
+                    continue;
+                }
+                if (visited[nr][nc] || map[nr][nc] == islandNum) {
+                    continue;
+                }
+                if (map[nr][nc] == 0) {
+                    visited[nr][nc] = true;
+                    queue.addLast(new Node(nr, nc, now.dist + 1));
+                } else {
+                    ANSWER = Math.min(ANSWER, now.dist);
+                }
             }
         }
     }
 
-    static int[] print(int[] arr, boolean[] visited) {
-        for(int i = 0; i < arr.length; i++) {
-            if(visited[i] == true)
-                System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
-    public static void main(String[] args) {
-        int n=4;
-        int m=6;
-        int k=9;
-        int[] u = {1,2,3,1,1,2};
-        int[] v ={2,3,4,4,3,4};
-        int[] l ={3,3,3,3,1,2};
-//        int n=3;
-//        int m=3;
-//        int k=1;
-//        int[] u = {1,1,2};
-//        int[] v ={2,3,3};
-//        int[] l ={2,2,2};
-        System.out.println(solution(n,m,k,u,v,l));
+    private static void setIslandNum(int r, int c) {
+        ArrayDeque<Node> queue = new ArrayDeque<>();
+        queue.addLast(new Node(r, c, 0));
 
+        while (!queue.isEmpty()) {
+            Node now = queue.pollFirst();
+            for (int i = 0; i < 4; i++) {
+                int nr = now.r + ry[i];
+                int nc = now.c + rx[i];
+
+                if (nr < 0 || nc < 0 || nr >= N || nc >= N) {
+                    continue;
+                }
+                if (visited[nr][nc] || map[nr][nc] == 0) {
+                    continue;
+                }
+                visited[nr][nc] = true;
+                map[nr][nc] = IslandNum;
+                queue.addLast(new Node(nr, nc, 0));
+            }
+        }
     }
 }
+
