@@ -4,7 +4,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
-//톱니바퀴 골드5 구현 시뮬
+
+//로봇청소기 골드5 구현 시물레이션
 public class BJ_CT_49 {
     static int[] arr;
     static String[] saw;
