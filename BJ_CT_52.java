@@ -31,39 +31,30 @@ public class BJ_CT_52 {
             }
         }
 
-        int max = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 visited[i][j]=true;
-                dfs(i,j,map[i][j],0,false);
-                max= Math.max(max,MAX);
+                dfs(i,j,map[i][j],0);
                 visited[i][j]=false;
 
             }
             
         }
 
-        System.out.println(max);
+        System.out.println(MAX);
 
     }
 
-    public static void dfs(int x,int y,int result,int cnt,boolean flag){
-        flag = false;
+    public static void dfs(int x,int y,int result,int cnt){
         if(cnt==4){
-            if(flag){
-                MAX = Math.max(MAX,result);
-            }else{
-                result-=map[x][y];
-                MAX = Math.max(MAX,result);
-            }
-            
+            result-=map[x][y];
+            MAX = Math.max(MAX,result);
             return;
         }
 
         for (int i = 0; i < 4; i++) {
             // ㅗ 처리를 따로?
             if(cnt == 2){
-                flag=true;
                 int dx = x+dr[i];
                 int dy = y+dc[i];
                 if(dx<0||dy<0||dx>=N||dy>=M) continue;
@@ -74,13 +65,12 @@ public class BJ_CT_52 {
                         if(rx<0||ry<0||rx>=N||ry>=M) continue;
                         if(visited[rx][ry])continue;
 
-                        dfs(rx,ry,result+=map[rx][ry],cnt+1,flag);
+                        dfs(rx,ry,result+=map[rx][ry],cnt+1);
                         result-=map[rx][ry];
                     }
                 }
 
             }
-                flag =false;
                 int dx = x+dr[i];
                 int dy = y+dc[i];
     
@@ -88,7 +78,7 @@ public class BJ_CT_52 {
                 if(visited[dx][dy]) continue;
     
                 visited[dx][dy]=true;
-                dfs(dx,dy,result+=map[dx][dy],cnt+1,flag);
+                dfs(dx,dy,result+=map[dx][dy],cnt+1);
                 result-=map[dx][dy];
                 visited[dx][dy]=false;
             
