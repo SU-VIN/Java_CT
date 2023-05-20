@@ -44,7 +44,7 @@ public class SWEA_CT_13 {
             return;
         }
 
-        for (int i = start; i < map.length; i++) {
+        for (int i = 0; i < map.length; i++) {
             for (int j = i; j < map.length; j++) {
                 if(!visited[j]){
                     visited[j]=true;

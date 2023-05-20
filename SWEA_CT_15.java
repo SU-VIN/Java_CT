@@ -37,7 +37,7 @@ public class SWEA_CT_15 {
         }
 
 
-        for (int i = 1; i <= T; i++) {
+        for (int i = 1; i <= T; i++) { 
             System.out.println("#"+i+" "+dq.pollFirst());
             
         }
