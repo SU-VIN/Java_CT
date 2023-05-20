@@ -23,7 +23,7 @@ public class SWEA_CT_13 {
             visited = new boolean[N];
             st=new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
-                map[i]=Integer.parseInt(st.nextToken());
+                map[j]=Integer.parseInt(st.nextToken());
             }
             result=0;
             dfs(0,0);
@@ -36,7 +36,6 @@ public class SWEA_CT_13 {
             System.out.println("#"+i+" "+dq.pollFirst());
         }
     }
-
     public static void dfs(int start,int cnt){
 
         if(cnt==K){
@@ -44,17 +43,14 @@ public class SWEA_CT_13 {
             return;
         }
 
-        for (int i = 0; i < map.length; i++) {
-            for (int j = i; j < map.length; j++) {
-                if(!visited[j]){
-                    visited[j]=true;
-                    cnt+=map[j];
-                    dfs(i,cnt);
-                    visited[j]=false;
-                }
+        for (int i = start; i < map.length; i++) {
+            if(!visited[i]){
+                visited[i]=true;
+                dfs(i+1,cnt+=map[i]);
+                cnt-=map[i];
+                visited[i]=false;
 
             }
-            
         }
 
     }
