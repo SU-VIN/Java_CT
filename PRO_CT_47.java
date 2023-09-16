@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 //레벨2 완전탐색 소수찾기 1h
 public class PRO_CT_47 {
     static String number;
